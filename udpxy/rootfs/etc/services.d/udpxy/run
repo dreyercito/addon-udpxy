@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bashio
+declare port
+s6-svc -O /var/run/s6/services/udpxy
+
+port="5056"
+if bashio::config.has_value "port"; then
+    port=$(bashio::config "port")
+fi
+
+#-T ?
+
+exec udpxy -m eth0 -p "$port"
+
