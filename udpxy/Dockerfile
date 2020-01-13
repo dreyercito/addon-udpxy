@@ -16,7 +16,7 @@ RUN \
     && git clone --branch "1.0-24.1" --depth=1 \
         "https://github.com/pcherenkov/udpxy" /tmp/udpxy \
     \
-    && cd /tmp/udpxy \
+    && cd /tmp/udpxy/chipmunk \
     && make \
     && make install \
     \
