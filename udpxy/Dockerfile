@@ -11,7 +11,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN \
     apk add --no-cache --virtual .build-dependencies \
         build-base=0.5-r1 \
-        git=2.24.1-r0 \
+        git=2.22.2-r0 \
     \
     && git clone --branch "1.0-24.1" --depth=1 \
         "https://github.com/pcherenkov/udpxy" /tmp/udpxy \
