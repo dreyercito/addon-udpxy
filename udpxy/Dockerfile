@@ -1,5 +1,5 @@
 #Based on official wireguard addon
-ARG BUILD_FROM=hassioaddons/base:4.1.1
+ARG BUILD_FROM=ghcr.io/hassio-addons/base/armhf:9.1.2
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -10,8 +10,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3003
 RUN \
     apk add --no-cache --virtual .build-dependencies \
-        build-base=0.5-r1 \
-        git=2.22.2-r0 \
+        build-base=0.5-r2 \
+        git=2.30.1-r0 \
     \
     && git clone --branch "1.0-24.1" --depth=1 \
         "https://github.com/pcherenkov/udpxy" /tmp/udpxy \
@@ -41,12 +41,14 @@ LABEL \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
     maintainer="Jose Carlos Luna <Jose.Carlos.Luna@gamil.com>" \
-    org.label-schema.description="UDP proxy" \
-    org.label-schema.build-date=${BUILD_DATE} \
-    org.label-schema.name="udpxy" \
-    org.label-schema.schema-version="1.0" \
-    org.label-schema.url="https://github.com/dreyercito/addon-udpxy/tree/master/README.md" \
-    org.label-schema.usage="https://github.com/dreyercito/addon-udpxy/tree/master/README.md" \
-    org.label-schema.vcs-ref=${BUILD_REF} \
-    org.label-schema.vcs-url="https://github.com/dreyercito/addon-udpxy" \
-    org.label-schema.vendor="Dreyer Hass.io Add-ons"
+    org.opencontainers.image.title="${BUILD_NAME}" \
+    org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
+    org.opencontainers.image.vendor="Dreyercito Hass.io Add-ons" \
+    org.opencontainers.image.authors="Jose Carlos Luna <Jose.Carlos.Luna@gmail.com>" \
+    org.opencontainers.image.licenses="MIT" \
+    org.opencontainers.image.url="https://github.com/dreyercito/addon-udpxy/tree/master/README.md" \
+    org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
+    org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
+    org.opencontainers.image.created=${BUILD_DATE} \
+    org.opencontainers.image.revision=${BUILD_REF} \
+    org.opencontainers.image.version=${BUILD_VERSION}
