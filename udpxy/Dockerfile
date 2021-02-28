@@ -13,7 +13,7 @@ RUN \
         build-base=0.5-r2 \
         git=2.30.1-r0 \
     \
-    && git clone --branch "1.0-24.1" --depth=1 \
+    && git clone --branch "1.0-25.1" --depth=1 \
         "https://github.com/pcherenkov/udpxy" /tmp/udpxy \
     \
     && cd /tmp/udpxy/chipmunk \
