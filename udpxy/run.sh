@@ -14,5 +14,8 @@ fi
 
 
 #-T ?
+echo Listening in "$interface/$port"
+find / -name udpxy 
+
 exec udpxy -m "$interface" -p "$port"
 

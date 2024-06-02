@@ -1,5 +1,5 @@
 name: "udpxy"
-version: "2.0.0"
+version: "2.0.1"
 slug: "udpxy"
 description: >-
   Udp Proxy
@@ -12,6 +12,7 @@ arch:
 url: "https://github.com/dreyercito/addon-udpxy/"
 host_network: true
 init: false
+startup: application
 options:
   port: 5056
   interface: "end0"
