@@ -16,6 +16,6 @@ fi
 #-T ?
 echo Listening in "$interface/$port"
 
-exec /usr/local/bin/udpxy -m "$interface" -p "$port"
+exec /usr/local/bin/udpxy -v -m "$interface" -p "$port"
 echo Exec aborted
 
