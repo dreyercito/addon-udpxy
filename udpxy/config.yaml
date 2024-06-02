@@ -14,8 +14,10 @@ host_network: true
 init: false
 options:
   port: 5056
+  interface: "end0"
 schema:
   port: int
+  interface: str
 
 
 
