@@ -13,9 +13,7 @@ if bashio::config.has_value "interface"; then
 fi
 
 
-#-T ?
 echo Listening in "$interface/$port"
-
-exec /usr/local/bin/udpxy -v -m "$interface" -p "$port"
+exec /usr/local/bin/udpxy -v -m "$interface" -p "$port" -v  -T
 echo Exec aborted
 
