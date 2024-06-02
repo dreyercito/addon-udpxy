@@ -11,6 +11,7 @@ arch:
   - i386
 url: "https://github.com/dreyercito/addon-udpxy/"
 host_network: true
+init: false
 options:
   port: 5056
 schema:
