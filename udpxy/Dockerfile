@@ -1,12 +1,5 @@
-#Based on official wireguard addon
-ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:9.1.2
-# hadolint ignore=DL3006
-FROM ${BUILD_FROM}
-
-# Set shell
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
-# Setup base
+ARG BUILD_FROM
+FROM $BUILD_FROM
 # hadolint ignore=DL3003
 RUN \
     apk add --no-cache --virtual .build-dependencies \
@@ -24,31 +17,10 @@ RUN \
     && apk del --no-cache --purge \
         .build-dependencies
 
-# Copy root filesystem
-COPY rootfs /
+# Copy data for add-on
+COPY run.sh /
+RUN chmod a+x /run.sh
+CMD [ "/run.sh" ]
 
-# Build arguments
-ARG BUILD_ARCH
-ARG BUILD_DATE
-ARG BUILD_REF
-ARG BUILD_VERSION
 
-# Labels
-LABEL \
-    io.hass.name="udpxy" \
-    io.hass.description="UDP proxy" \
-    io.hass.arch="${BUILD_ARCH}" \
-    io.hass.type="addon" \
-    io.hass.version=${BUILD_VERSION} \
-    maintainer="Jose Carlos Luna <Jose.Carlos.Luna@gamil.com>" \
-    org.opencontainers.image.title="${BUILD_NAME}" \
-    org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="Dreyercito Hass.io Add-ons" \
-    org.opencontainers.image.authors="Jose Carlos Luna <Jose.Carlos.Luna@gmail.com>" \
-    org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.url="https://github.com/dreyercito/addon-udpxy/tree/master/README.md" \
-    org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
-    org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
-    org.opencontainers.image.created=${BUILD_DATE} \
-    org.opencontainers.image.revision=${BUILD_REF} \
-    org.opencontainers.image.version=${BUILD_VERSION}
+
