@@ -3,8 +3,8 @@ FROM $BUILD_FROM
 # hadolint ignore=DL3003
 RUN \
     apk add --no-cache --virtual .build-dependencies \
-        build-base=0.5-r2 \
-        git=2.30.1-r0 \
+        build-base=0.5-r3 \
+        git=	2.45.2-r0 \
     \
     && git clone --branch "1.0-25.1" --depth=1 \
         "https://github.com/pcherenkov/udpxy" /tmp/udpxy \
