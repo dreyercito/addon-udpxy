@@ -4,7 +4,7 @@ FROM $BUILD_FROM
 RUN \
     apk add --no-cache --virtual .build-dependencies \
         build-base=0.5-r3 \
-        git=2.45.1-r0 \
+        git=2.43.7-r0 \
     \
     && git clone --branch "1.0-25.1" --depth=1 \
         "https://github.com/pcherenkov/udpxy" /tmp/udpxy \
