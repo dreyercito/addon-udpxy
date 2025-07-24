@@ -15,7 +15,7 @@ init: false
 startup: application
 options:
   port: 5056
-  interface: "end0"
+  interface: "eth0"
 schema:
   port: int
   interface: str
